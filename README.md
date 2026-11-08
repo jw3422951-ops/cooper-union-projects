@@ -2,6 +2,8 @@
 
 Over two summers at Cooper Union, I went from modeling a recycling station with a team to independently designing and building a working waste sorter.
 
+[CreditCAN](#creditcan) · [Electronic game](#team-mini-project--electronic-game) · [Arduino exercises](#arduino-exercises)
+
 ## CreditCAN
 
 ### Independent waste sorter
