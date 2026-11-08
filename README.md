@@ -30,6 +30,13 @@ I designed the finger-jointed enclosure in Onshape, laser-cut the panels, and ge
 
 <img src="assets/year-2-chute-detail.jpg" alt="Close-up of the printed rotating chute, pinion, and gear assembly" width="380">
 
+#### CAD drawings
+
+These DXF exports document the enclosure, pusher, and drive components during development.
+
+- [Enclosure](models/creditcan/enclosure.dxf?raw=true) · [Board](models/creditcan/board.dxf?raw=true) · [Side panel](models/creditcan/side-panel.dxf?raw=true)
+- [Pusher](models/creditcan/pusher.dxf?raw=true) · [Large gear](models/creditcan/large-gear.dxf?raw=true) · [Small gear](models/creditcan/small-gear.dxf?raw=true)
+
 ### Firmware and motor sequence
 
 I wrote the initial Arduino C++ sketch myself and used AI to help identify and correct errors. A state machine coordinates the inputs and motor movements. I calibrated motor step counts on the prototype and stored the counts and classification thresholds as named constants.
@@ -60,6 +67,10 @@ The class also covered assembly design, dimensional tolerances, and shaft and ho
 
 <img src="assets/year-2-assembly-and-tolerance-class.jpg" alt="Classroom slide on assembly design, tolerances, and clearance, transition, and interference fits" width="560">
 
+### Arduino exercises
+
+I practiced reading joystick input, controlling LEDs and PWM brightness, and driving an I²C LCD. The collection includes three early sketches and notes on what I would debug next. [Browse the Arduino exercises](arduino-exercises)
+
 ### Team mini-project · Electronic game
 
 My team built a small electronic game with two push buttons, colored LEDs, and an LCD that displayed a replay prompt. I was responsible for the 3D modeling and helped debug the game.
@@ -71,6 +82,8 @@ My team built a small electronic game with two push buttons, colored LEDs, and a
 https://github.com/user-attachments/assets/599749b5-15be-4854-b69c-446686e29c17
 
 [Original recording (MP4)](assets/electronic-game-demo.mp4)
+
+[Early reaction game sketch (Arduino Uno)](game/Game_v12/Game_v12.ino) uses a shared button for two players. The demonstration above shows the later build with two buttons and an LCD.
 
 #### CAD assembly
 
