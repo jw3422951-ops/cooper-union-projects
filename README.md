@@ -18,7 +18,7 @@ I revised the mechanism during fabrication and integrated the sensors and motors
 | VL53L0X time-of-flight sensor | Measures distance to the item, which the system uses to estimate its height. [Sensor documentation](https://www.st.com/en/imaging-and-photonics-solutions/vl53l0x.html) |
 | Serial | I enter the item's mass manually in the working prototype. |
 
-The sorter checks for metal first. For other items, the classifier combines the entered mass with the estimated height. It has three sorting routes for plastic and paper recyclables, metal cans, and food waste. A fourth route rejects items outside the calibrated weight or classification limits.
+The sorter checks for metal first and uses thresholds for mass, height, and mass divided by height. The four routes are plastic bottles, aluminum cans, food waste, and rejects.
 
 ### Mechanical layout and control
 
@@ -39,9 +39,11 @@ These DXF exports document the enclosure, pusher, and drive components during de
 
 ### Firmware and motor sequence
 
-I wrote the initial Arduino C++ sketch myself and used AI to help identify and correct errors. A state machine coordinates the inputs and motor movements. I calibrated motor step counts on the prototype and stored the counts and classification thresholds as named constants.
+I wrote the initial Arduino C++ sketch myself and used AI to help identify and correct errors. The sketch waits for a mass entry in the Serial Monitor, classifies the item, and runs the motor sequence. Step counts and classification thresholds are stored as named constants. [Open the Arduino Mega 2560 firmware](firmware/CreditCAN/CreditCAN.ino)
 
-The chute rotates to the selected bin, the program waits two seconds, the pusher extends and retracts, and the chute returns to its starting position. I designed the sequence around the blocking `step()` calls in Arduino's standard `Stepper` library so that each move finishes before the next begins. Reducing simultaneous motor demand was a secondary consideration. [Arduino Stepper library source](https://github.com/arduino-libraries/Stepper/blob/master/src/Stepper.cpp#L175-L218)
+The chute rotates to the selected bin when needed. The program waits two seconds, extends and retracts the pusher, and returns the chute to its starting position. I designed the sequence around the blocking `step()` calls in Arduino's standard `Stepper` library so that each move finishes before the next begins. Reducing simultaneous motor demand was a secondary consideration. [Arduino Stepper library source](https://github.com/arduino-libraries/Stepper/blob/master/src/Stepper.cpp#L175-L218)
+
+An earlier bench test alternates individual steps between two motors to move them forward and back. This copy comes from the Arduino IDE build cache. [Open the dual-stepper bench test](firmware/DualStepperTest/DualStepperTest.ino)
 
 ### Future work
 
@@ -69,7 +71,7 @@ The class also covered assembly design, dimensional tolerances, and shaft and ho
 
 ### Arduino exercises
 
-I practiced reading joystick input, controlling LEDs and PWM brightness, and driving an I²C LCD. The collection includes three early sketches and notes on what I would debug next. [Browse the Arduino exercises](arduino-exercises)
+The sketches include a potentiometer-controlled servo, ultrasonic distance measurement with LED feedback, and exercises with joysticks, LEDs, and an I²C LCD. [Browse the Arduino exercises](arduino-exercises)
 
 ### Team mini-project · Electronic game
 
