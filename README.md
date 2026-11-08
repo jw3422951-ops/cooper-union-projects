@@ -16,8 +16,6 @@ We designed CreditCAN as a station that would award credit at nearby businesses 
 
 ## Year 2 · Working waste sorter (2026)
 
-I designed and built this working sorter myself, including the mechanical assembly and the integration of the sensors and motors with an Arduino Mega 2560. During fabrication I revised parts of the original mechanism and developed a classification method based on metal detection, estimated height, and manually entered mass.
-
 ### What I learned in class
 
 I learned the basics of ESP32 Wi-Fi and Bluetooth and practiced working with motors, ultrasonic distance sensors, LEDs, and push buttons. I used classroom explanations and AI to understand how the components worked, then tried writing code for the exercises.
@@ -26,7 +24,19 @@ The class also covered assembly design, dimensional tolerances, and shaft and ho
 
 <img src="assets/year-2-assembly-and-tolerance-class.jpg" alt="Classroom slide on assembly design, tolerances, and clearance, transition, and interference fits" width="560">
 
-### Sensing and classification
+### Team mini-project · Electronic game
+
+My team built a small electronic game with two push buttons, colored LEDs, and an LCD that displayed a replay prompt. I was responsible for the 3D modeling and helped debug the game. The STL below is my assembly model.
+
+<img src="assets/electronic-game.jpg" alt="Breadboard game with buttons, LEDs, and an LCD showing the replay prompt" width="560">
+
+[View the 3D assembly (STL)](models/electronic-game-assembly.stl) · [Demo recording (MP4, 2:41)](assets/electronic-game-demo.mp4)
+
+### Independent waste sorter
+
+I designed and built this working sorter myself, including the mechanical assembly and the integration of the sensors and motors with an Arduino Mega 2560. During fabrication I revised parts of the original mechanism and developed a classification method based on metal detection, estimated height, and manually entered mass.
+
+#### Sensing and classification
 
 | Input | Role |
 | --- | --- |
@@ -36,7 +46,7 @@ The class also covered assembly design, dimensional tolerances, and shaft and ho
 
 The sorter checks for metal first. For other items, the classifier combines the entered mass with the estimated height. It has three sorting routes for plastic and paper recyclables, metal cans, and food waste. A fourth route rejects items outside the calibrated weight or classification limits.
 
-### Mechanical layout and control
+#### Mechanical layout and control
 
 - **Top.** A fixed platform holds the item near the sensors.
 - **Middle.** A ring gear and pinion turn the chute toward the selected route. A rack and pinion drive the pusher.
@@ -46,13 +56,13 @@ I designed the finger-jointed enclosure in Onshape, laser-cut the panels, and ge
 
 <img src="assets/year-2-chute-detail.jpg" alt="Close-up of the printed rotating chute, pinion, and gear assembly" width="380">
 
-### Firmware and motor sequence
+#### Firmware and motor sequence
 
 I wrote the initial Arduino C++ sketch myself and used AI to help identify and correct errors. A state machine coordinates the inputs and motor movements. I calibrated motor step counts on the prototype and stored the counts and classification thresholds as named constants.
 
 The chute rotates to the selected bin, the program waits two seconds, the pusher extends and retracts, and the chute returns to its starting position. I designed the sequence around the blocking `step()` calls in Arduino's standard `Stepper` library so that each move finishes before the next begins. Reducing simultaneous motor demand was a secondary consideration. [Arduino Stepper library source](https://github.com/arduino-libraries/Stepper/blob/master/src/Stepper.cpp#L175-L218)
 
-### Future work
+#### Future work
 
 Integrate the load cell and HX711 to measure mass automatically. Then test whether the variance in load cell readings after a short vibration pulse can help identify partially filled containers.
 
