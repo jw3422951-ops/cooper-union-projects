@@ -30,13 +30,6 @@ I designed the finger-jointed enclosure in Onshape, laser-cut the panels, and ge
 
 <img src="assets/year-2-chute-detail.jpg" alt="Close-up of the printed rotating chute, pinion, and gear assembly" width="380">
 
-#### CAD drawings
-
-These DXF exports document the enclosure and drive components during development.
-
-- [Enclosure](models/creditcan/enclosure.dxf?raw=true) · [Board](models/creditcan/board.dxf?raw=true) · [Side panel](models/creditcan/side-panel.dxf?raw=true)
-- [Large gear](models/creditcan/large-gear.dxf?raw=true) · [Small gear](models/creditcan/small-gear.dxf?raw=true)
-
 ### Firmware and motor sequence
 
 I wrote the initial Arduino C++ sketch myself and used AI to help identify and correct errors. The sketch waits for a mass entry in the Serial Monitor, classifies the item, and runs the motor sequence. Step counts and classification thresholds are stored as named constants. [Open the Arduino Mega 2560 firmware](firmware/CreditCAN/CreditCAN.ino)
