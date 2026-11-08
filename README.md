@@ -18,6 +18,14 @@ We designed CreditCAN as a station that would award credit at nearby businesses 
 
 I designed and built this working sorter myself, including the mechanical assembly and the integration of the sensors and motors with an Arduino Mega 2560. During fabrication I revised parts of the original mechanism and developed a classification method based on metal detection, estimated height, and manually entered mass.
 
+### What I learned in class
+
+I learned the basics of ESP32 Wi-Fi and Bluetooth and practiced working with motors, ultrasonic distance sensors, LEDs, and push buttons. I used classroom explanations and AI to understand how the components worked, then tried writing code for the exercises.
+
+The class also covered assembly design, dimensional tolerances, and shaft and hole fits. I applied what I learned about clearance and fit when designing parts for later 3D modeling and laser-cut fabrication projects.
+
+<img src="assets/year-2-assembly-and-tolerance-class.jpg" alt="Classroom slide on assembly design, tolerances, and clearance, transition, and interference fits" width="560">
+
 ### Sensing and classification
 
 | Input | Role |
