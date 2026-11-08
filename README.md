@@ -16,32 +16,36 @@ We designed CreditCAN as a station that would award credit at nearby businesses 
 
 ## Year 2 · Working waste sorter (2026)
 
-I designed and built this working sorter myself, including the mechanical assembly and the integration of the sensors and motors with an Arduino Mega 2560. During fabrication I revised parts of the original mechanism and developed a classification method using three low-cost sensors.
+I designed and built this working sorter myself, including the mechanical assembly and the integration of the sensors and motors with an Arduino Mega 2560. During fabrication I revised parts of the original mechanism and developed a classification method based on metal detection, estimated height, and manually entered mass.
 
 ### Sensing and classification
 
-| Sensor | Role |
+| Input | Role |
 | --- | --- |
 | Inductive proximity sensor (NPN, normally closed) | Checks for metal. |
-| Load cell and HX711 | Measures item mass. |
 | VL53L0X time-of-flight sensor | Measures distance to the item, which the system uses to estimate its height. [Sensor documentation](https://www.st.com/en/imaging-and-photonics-solutions/vl53l0x.html) |
+| Serial | I enter the item's mass manually in the working prototype. |
 
-The sorter checks for metal first. For other items, the classifier combines mass and height information from the sensors. It has three sorting routes for plastic and paper recyclables, metal cans, and food waste. A fourth route rejects items outside the calibrated weight or classification limits.
+The sorter checks for metal first. For other items, the classifier combines the entered mass with the estimated height. It has three sorting routes for plastic and paper recyclables, metal cans, and food waste. A fourth route rejects items outside the calibrated weight or classification limits.
 
 ### Mechanical layout and control
 
-- **Top.** A fixed weighing platform holds the item while the sensors take readings.
+- **Top.** A fixed platform holds the item near the sensors.
 - **Middle.** A ring gear and pinion turn the chute toward the selected route. A rack and pinion drive the pusher.
 - **Bottom.** Fixed bins collect the sorted items.
 
-I designed the finger-jointed enclosure in Onshape, laser-cut the panels, and generated the gears and racks with FeatureScript for 3D printing. A C++ state machine coordinates the sensor readings and motor movements. I calibrated thresholds and motor step counts on the physical build and recorded them as named constants.
+I designed the finger-jointed enclosure in Onshape, laser-cut the panels, and generated the gears and racks with FeatureScript for 3D printing.
 
 <img src="assets/year-2-chute-detail.jpg" alt="Close-up of the printed rotating chute, pinion, and gear assembly" width="380">
 
-### Liquid detection and build refinements
+### Firmware and motor sequence
 
-I tried continuous vibration to detect partially filled containers, but I could not get a useful signal that way. I switched to a short vibration pulse and then measured the variance of the load cell readings after the motor stopped to look for liquid sloshing.
+I wrote the initial Arduino C++ sketch myself and used AI to help identify and correct errors. A state machine coordinates the inputs and motor movements. I calibrated motor step counts on the prototype and stored the counts and classification thresholds as named constants.
 
-I used flexible 30 AWG silicone wire with slack near the load cell to reduce pull on the weighing platform. I sequenced the motors to limit simultaneous current demand on the 5 V, 10 A supply.
+The chute rotates to the selected bin, the program waits two seconds, the pusher extends and retracts, and the chute returns to its starting position. I designed the sequence around the blocking `step()` calls in Arduino's standard `Stepper` library so that each move finishes before the next begins. Reducing simultaneous motor demand was a secondary consideration. [Arduino Stepper library source](https://github.com/arduino-libraries/Stepper/blob/master/src/Stepper.cpp#L175-L218)
+
+### Future work
+
+Integrate the load cell and HX711 to measure mass automatically. Then test whether the variance in load cell readings after a short vibration pulse can help identify partially filled containers.
 
 [Back to my GitHub profile](https://github.com/jw3422951-ops)
