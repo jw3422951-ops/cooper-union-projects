@@ -26,7 +26,7 @@ The class also covered assembly design, dimensional tolerances, and shaft and ho
 
 ### Team mini-project · Electronic game
 
-My team built a small electronic game with two push buttons, colored LEDs, and an LCD that displayed a replay prompt. I was responsible for the 3D modeling and helped debug the game. The STL below is my assembly model.
+My team built a small electronic game with two push buttons, colored LEDs, and an LCD that displayed a replay prompt. I was responsible for the 3D modeling and helped debug the game.
 
 <img src="assets/electronic-game.jpg" alt="Breadboard game with buttons, LEDs, and an LCD showing the replay prompt" width="560">
 
@@ -34,7 +34,13 @@ My team built a small electronic game with two push buttons, colored LEDs, and a
 
 https://github.com/user-attachments/assets/599749b5-15be-4854-b69c-446686e29c17
 
-[View the 3D assembly (STL)](models/electronic-game-assembly.stl) · [Original recording (MP4)](assets/electronic-game-demo.mp4)
+[Original recording (MP4)](assets/electronic-game-demo.mp4)
+
+#### CAD assembly
+
+<img src="assets/electronic-game-cad.png" alt="CAD assembly of the game enclosure with an LCD opening, button cutouts, and a separate base panel" width="460">
+
+[Download the assembly file (STL)](https://github.com/jw3422951-ops/credit-can/raw/refs/heads/main/models/electronic-game-assembly.stl)
 
 ### Independent waste sorter
 
