@@ -30,7 +30,11 @@ My team built a small electronic game with two push buttons, colored LEDs, and a
 
 <img src="assets/electronic-game.jpg" alt="Breadboard game with buttons, LEDs, and an LCD showing the replay prompt" width="560">
 
-[View the 3D assembly (STL)](models/electronic-game-assembly.stl) · [Demo recording (MP4, 2:41)](assets/electronic-game-demo.mp4)
+**Game demonstration (2:41)**
+
+https://github.com/user-attachments/assets/599749b5-15be-4854-b69c-446686e29c17
+
+[View the 3D assembly (STL)](models/electronic-game-assembly.stl) · [Original recording (MP4)](assets/electronic-game-demo.mp4)
 
 ### Independent waste sorter
 
