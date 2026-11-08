@@ -5,7 +5,7 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 #define bottonpin 2
 
 char message[] = "hello";
-int cursorPos = 0;   // 全局变量,记录光标位置
+int cursorPos = 0;
 
 void setup() {
   Serial.begin(9600);

@@ -32,10 +32,10 @@ I designed the finger-jointed enclosure in Onshape, laser-cut the panels, and ge
 
 #### CAD drawings
 
-These DXF exports document the enclosure, pusher, and drive components during development.
+These DXF exports document the enclosure and drive components during development.
 
 - [Enclosure](models/creditcan/enclosure.dxf?raw=true) · [Board](models/creditcan/board.dxf?raw=true) · [Side panel](models/creditcan/side-panel.dxf?raw=true)
-- [Pusher](models/creditcan/pusher.dxf?raw=true) · [Large gear](models/creditcan/large-gear.dxf?raw=true) · [Small gear](models/creditcan/small-gear.dxf?raw=true)
+- [Large gear](models/creditcan/large-gear.dxf?raw=true) · [Small gear](models/creditcan/small-gear.dxf?raw=true)
 
 ### Firmware and motor sequence
 
@@ -82,8 +82,6 @@ My team built a small electronic game with two push buttons, colored LEDs, and a
 **Game demonstration (2:41)**
 
 https://github.com/user-attachments/assets/599749b5-15be-4854-b69c-446686e29c17
-
-[Original recording (MP4)](assets/electronic-game-demo.mp4)
 
 [Early reaction game sketch (Arduino Uno)](game/Game_v12/Game_v12.ino) uses a shared button for two players. The demonstration above shows the later build with two buttons and an LCD.
 

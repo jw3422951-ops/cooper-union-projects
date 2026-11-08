@@ -1,6 +1,6 @@
 #define X_pin  A1
 #define Y_pin  A0
-#define bottonpin  2 
+#define bottonpin  2
 #define upLEDpin 6
 #define rightLEDpin 10
 #define downLEDpin  9
@@ -15,18 +15,20 @@ void setup() {
   pinMode(downLEDpin,OUTPUT);
   pinMode(X_pin, INPUT);
   pinMode(Y_pin,INPUT);
-  pinMode(bottonpin, OUTPUT);
+  pinMode(bottonpin, INPUT);
   startanimation();
 }
 void loop(){
-  int valuex= analogRead(X_pin); 
-  int valuey= analogRead(Y_pin); 
+  int valuex= analogRead(X_pin);
+  int valuey= analogRead(Y_pin);
   int brightness= 0;
-  if (bottonpin== HIGH){
-     digitalWrite(leftLEDpin,HIGH);
-      digitalWrite(rightLEDpin,HIGH);
-      digitalWrite(upLEDpin,HIGH);
-      digitalWrite(downLEDpin,HIGH);
+  int buttonstate = digitalRead(bottonpin);
+  digitalWrite(leftLEDpin,buttonstate);
+  digitalWrite(rightLEDpin,buttonstate);
+  digitalWrite(upLEDpin,buttonstate);
+  digitalWrite(downLEDpin,buttonstate);
+  if (buttonstate == HIGH){
+    return;
   }
   if(valuex<= 200){
     digitalWrite(leftLEDpin,HIGH);
@@ -34,14 +36,14 @@ void loop(){
     digitalWrite(leftLEDpin,LOW);
     }
   if(valuex>=800){
-    for(brightness=0;brightness<=220;brightness+=10)
-    delay(10);
-    analogWrite(rightLEDpin,brightness);
-        if(brightness=220){
-    for(brightness=0;brightness<=220;brightness-=10)
-    delay(100);
-    analogWrite(rightLEDpin,brightness);
-    delay(100);}
+    for(brightness=0;brightness<=220;brightness+=10){
+      analogWrite(rightLEDpin,brightness);
+      delay(10);
+    }
+    for(brightness=220;brightness>=0;brightness-=10){
+      analogWrite(rightLEDpin,brightness);
+      delay(10);
+    }
   }
   if(valuey<=200){
     digitalWrite(upLEDpin,HIGH);
