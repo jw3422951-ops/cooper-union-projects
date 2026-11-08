@@ -15,4 +15,4 @@ These six early sketches document my practice with motors, sensors, and interact
 
 Open each `.ino` file separately in the Arduino IDE. The servo sketch uses `Servo.h`, and the LCD sketch uses `LiquidCrystal_I2C.h` and address `0x27`.
 
-[Back to Cooper Union Summer Projects](../README.md#year-2--classroom-work)
+[Back to Cooper Union Summer Projects](../README.md#arduino-exercises)
