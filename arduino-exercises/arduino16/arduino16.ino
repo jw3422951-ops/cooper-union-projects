@@ -19,7 +19,6 @@ void setup() {
 
 void loop() {
   float distance = getdistance();
-  if (distance == 0) return;
 
   if (distance < 40){
     digitalWrite(ledpin3,HIGH);
@@ -38,8 +37,6 @@ void loop() {
   }
   else if (distance > 80 && distance <= 100){
     digitalWrite(ledpin4,HIGH);
-    delay(200);
-    digitalWrite(ledpin4,LOW);
   }
 }
 
@@ -56,7 +53,7 @@ float getdistance(){
   digitalWrite(trig,HIGH);
   delayMicroseconds(10);
   digitalWrite(trig,LOW);
-  long duration=pulseIn(echo,HIGH,30000);
+  long duration=pulseIn(echo,HIGH);
   float distance = duration/2 * 0.034;
   Serial.println(distance);
   return distance;
