@@ -22,7 +22,7 @@ I revised the mechanism during fabrication and integrated the sensors and motors
 | VL53L0X time-of-flight sensor | Measures distance to the item, which the system uses to estimate its height. [Sensor documentation](https://www.st.com/en/imaging-and-photonics-solutions/vl53l0x.html) |
 | Serial | I enter the item's mass manually in the working prototype. |
 
-The sorter checks for metal first and uses thresholds for mass, height, and mass divided by height. The four routes are plastic bottles, aluminum cans, food waste, and rejects.
+The sketch watches for metal while waiting for a mass entry and uses thresholds for mass, height, and mass divided by height. The four routes are plastic bottles, aluminum cans, food waste, and rejects.
 
 #### Mechanical layout and control
 
@@ -36,7 +36,7 @@ I designed the finger-jointed enclosure in Onshape, laser-cut the panels, and ge
 
 #### Firmware and motor sequence
 
-I wrote the initial Arduino C++ sketch myself and used AI to help identify and correct errors. The sketch waits for a mass entry in the Serial Monitor, classifies the item, and runs the motor sequence. Step counts and classification thresholds are stored as named constants. [Open the Arduino Mega 2560 firmware](01-creditcan/firmware/CreditCAN/CreditCAN.ino)
+I wrote the initial Arduino C++ sketch myself and used AI to help identify and correct errors. The sketch reads a line from the Serial Monitor, classifies the item, and runs the motor sequence. The step counts are near the top of the sketch, and the thresholds are in the sorting conditions. [Open the Arduino Mega 2560 firmware](01-creditcan/firmware/CreditCAN/CreditCAN.ino)
 
 The chute rotates to the selected bin when needed. The program waits two seconds, extends and retracts the pusher, and returns the chute to its starting position. I designed the sequence around the blocking `step()` calls in Arduino's standard `Stepper` library so that each move finishes before the next begins. Reducing simultaneous motor demand was a secondary consideration. [Arduino Stepper library source](https://github.com/arduino-libraries/Stepper/blob/master/src/Stepper.cpp#L175-L218)
 
